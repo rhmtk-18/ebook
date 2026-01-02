@@ -4,7 +4,7 @@ const { default: mongoose } = require("mongoose")
 let bcrypt = require("bcrypt")
 // const { default: Contact } = require("../src/components/pages/Contact")
 let app = express()
-
+const PORT = 4000
 app.use(cors())
 app.use(express.json())
 
@@ -332,10 +332,10 @@ app.get("/api/my-order/:userId" , async (req, res) => {
     }
 })
 
-mongoose
-    .connect("mongodb://127.0.0.1:27017/project")
+// mongoose.connect("mongodb://127.0.0.1:27017/project")
+mongoose.connect("mongodb+srv://rhmt6175_db_user:s9LWHXLF7L1XP9gk@cluster0.0ksyggt.mongodb.net/project")
     .then(() => {
-        app.listen(4000, () => {
+        app.listen(PORT, () => {
             console.log(" server Start");
         });
     })
