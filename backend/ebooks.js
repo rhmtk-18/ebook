@@ -5,7 +5,11 @@ let bcrypt = require("bcrypt")
 // const { default: Contact } = require("../src/components/pages/Contact")
 let app = express()
 const PORT = 4000
-app.use(cors())
+app.use(cors(
+    {
+        origin :  ["https://ebook-liard-one.vercel.app/" , "http://localhost:5173/" ] 
+    }
+))
 app.use(express.json())
 
 app.get("/fttfy", (req, res) => {
