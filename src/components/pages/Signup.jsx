@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { BACKEND_API } from "../../backendapi"
 function Signup() {
     let [name, getName] = useState("")
 
@@ -9,7 +10,7 @@ function Signup() {
     function handelSign(e) {
         
         e.preventDefault()
-        fetch("http://localhost:4000/api/signup", {
+        fetch(`${BACKEND_API}/api/signup`, {
             method: "post",
             body: JSON.stringify({ email, password  ,name}),
             headers: {

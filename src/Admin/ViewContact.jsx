@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { BACKEND_API } from "../backendapi";
 function ViewContact() {
     let [allContact, setAllContact] = useState([])
     
     async function getContact() {
         try {
-            let res = await fetch("http://localhost:4000/api/allContact");
+            let res = await fetch(`${BACKEND_API}/api/allContact`);
             let data = await res.json();
             console.log(data)
             setAllContact(data.allContact);
@@ -27,7 +28,7 @@ function ViewContact() {
 
        
         try {
-            let res = await fetch(`http://localhost:4000/api/deleteContact/${id}`,{
+            let res = await fetch(`${BACKEND_API}/api/deleteContact/${id}`,{
                 method : "delete"
             })
             let data = res.json()

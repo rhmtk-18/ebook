@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import { BACKEND_API } from "../../backendapi";
 function Blog() {
 
     let [allBlog, setAllBlog] = useState([])
 
     async function getBlog() {
         try {
-            let res = await fetch("http://localhost:4000/api/allblog");
+            let res = await fetch(`${BACKEND_API}/api/allblog`);
             let data = await res.json();
             console.log(data)
             setAllBlog(data.allblog);

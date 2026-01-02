@@ -1,6 +1,6 @@
 import React from "react"
 import { useState, useEffect } from "react"
-
+import { BACKEND_API } from "../backendapi"
 
 function AddBlog() {
    let [title, setTitle] = useState("")
@@ -11,7 +11,7 @@ function AddBlog() {
 
    function handelContact(e) {
       e.preventDefault()
-      fetch("http://localhost:4000/api/AddBlog", {
+      fetch(`${BACKEND_API}/api/AddBlog`, {
          method: "post",
          body: JSON.stringify({ img, title, poston, postby, des }),
          headers: {

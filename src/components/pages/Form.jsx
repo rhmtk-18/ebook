@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
+import { BACKEND_API } from "../../backendapi";
 function Form() {
     const [searchParams, setSearchParams] = useSearchParams();
     let [name, setName] = useState("")
@@ -45,7 +46,7 @@ function Form() {
         if (userId) {
             try {
                 const res = await axios.post(
-                    "http://localhost:4000/api/orders/checkout",
+                    `${BACKEND_API}/api/orders/checkout`,
                     {
                         userId,
                         address: { name, lastname, streetname, postalcode, state, number, city, country, floor },
@@ -62,7 +63,7 @@ function Form() {
                         handler: async function (response) {
                             try {
                                 const paymentRes = await fetch(
-                                    `http://localhost:4000/api/orders/${res.data.order._id}`,
+                                    `${BACKEND_API}/api/orders/${res.data.order._id}`,
                                     {
                                         method: "PUT",
                                         headers: { "Content-Type": "application/json" },

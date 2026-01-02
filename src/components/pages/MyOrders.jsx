@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
+import { BACKEND_API } from "../../backendapi";
 function MyOrders() {
 
     let [order, setOrder] = useState([])
@@ -7,7 +8,7 @@ function MyOrders() {
     async function getContact() {
         let userId = localStorage.getItem("userid")
         try {
-            let res = await fetch(`http://localhost:4000/api/my-order/${userId}`)
+            let res = await fetch(`${BACKEND_API}/api/my-order/${userId}`)
             let data = await res.json();
 
             setOrder(data);

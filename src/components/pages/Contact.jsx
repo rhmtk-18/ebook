@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { BACKEND_API } from "../../backendapi"
 function Contact() {
     let [name, getName] = useState("")
   
@@ -11,7 +12,7 @@ function Contact() {
             return alert(" Enter name ")
         }
 
-        fetch("http://localhost:4000/api/contact", {
+        fetch(`${BACKEND_API}/api/contact`, {
             method: "post",
             body: JSON.stringify({ name, email, message }),
             headers: {

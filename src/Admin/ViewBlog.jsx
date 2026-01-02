@@ -1,13 +1,14 @@
 
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { BACKEND_API } from "../backendapi";
 function ViewBlog() {
     let [allContact, setAllContact] = useState([])
 
     
     async function getContact() {
         try {
-            let res = await fetch("http://localhost:4000/api/allblog");
+            let res = await fetch(`${BACKEND_API}/api/allblog`);
             let data = await res.json();
             
             setAllContact(data.allblog);
@@ -24,7 +25,7 @@ function ViewBlog() {
         let ans = confirm("Data delete ?")
         if (ans) {
             try {
-                let res = await fetch(`http://localhost:4000/api/deleteBlog/${id}`, {
+                let res = await fetch(`${BACKEND_API}/api/deleteBlog/${id}`, {
                     method: "delete"
                 })
                 let data =  await res.json()
